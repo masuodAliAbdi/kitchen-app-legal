@@ -74,44 +74,10 @@
   /* ---------- Hero ---------- */
   header.hero {
     position: relative;
-    overflow: hidden;
     background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: #fff;
-    padding: 72px 24px 120px;
+    padding: 72px 24px 96px;
     text-align: center;
-  }
-  header.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.14) 0, transparent 40%),
-      radial-gradient(circle at 85% 80%, rgba(255,255,255,0.12) 0, transparent 45%);
-  }
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(2px);
-    opacity: 0.5;
-    animation: float 9s ease-in-out infinite;
-  }
-  .blob.b1 { width: 90px; height: 90px; top: 14%; left: 8%; background: rgba(255,255,255,0.16); animation-delay: 0s; }
-  .blob.b2 { width: 60px; height: 60px; top: 60%; left: 14%; background: rgba(255,255,255,0.12); animation-delay: 1.2s; }
-  .blob.b3 { width: 110px; height: 110px; top: 18%; right: 6%; background: rgba(255,255,255,0.10); animation-delay: 2.4s; }
-  .blob.b4 { width: 46px; height: 46px; top: 66%; right: 16%; background: rgba(255,255,255,0.18); animation-delay: 0.6s; }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-14px) translateX(6px); }
-  }
-  .hero-wave {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    width: 100%;
-    height: 64px;
-    display: block;
-    color: var(--background);
   }
   .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
   .badge {
@@ -176,11 +142,7 @@
     margin-bottom: 28px;
     box-shadow: var(--shadow);
     scroll-margin-top: 96px;
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
   }
-  section.panel.visible { opacity: 1; transform: translateY(0); }
 
   .panel-head {
     display: flex;
@@ -312,11 +274,6 @@
 </nav>
 
 <header class="hero">
-  <span class="blob b1"></span>
-  <span class="blob b2"></span>
-  <span class="blob b3"></span>
-  <span class="blob b4"></span>
-
   <div class="hero-inner">
     <span class="badge">📄 Legal &amp; Support</span>
     <h1>Privacy Policy &amp; Support</h1>
@@ -327,10 +284,6 @@
       <span>⚡ Fast support</span>
     </div>
   </div>
-
-  <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
-    <path fill="currentColor" d="M0,32 C240,80 480,80 720,48 C960,16 1200,16 1440,48 L1440,80 L0,80 Z"></path>
-  </svg>
 </header>
 
 <main>
@@ -414,25 +367,6 @@
 <footer>
   Kitchen App · Last updated June 2026
 </footer>
-
-<script>
-  // Subtle reveal-on-scroll for the section panels — no library needed.
-  var panels = document.querySelectorAll('section.panel');
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  panels.forEach(function (p) { observer.observe(p); });
-
-  // Fallback: if IntersectionObserver isn't supported, just show everything.
-  if (!('IntersectionObserver' in window)) {
-    panels.forEach(function (p) { p.classList.add('visible'); });
-  }
-</script>
 
 </body>
 </html>
