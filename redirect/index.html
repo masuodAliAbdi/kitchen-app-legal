@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opening Kitchen App…</title>
+<title>Opening Helix Kitchens…</title>
 <style>
   :root {
     --primary: #C75D3B;
@@ -60,7 +60,7 @@
 <body>
   <div class="card">
     <div class="spinner"></div>
-    <h1>Opening Kitchen App…</h1>
+    <h1>Opening Helix Kitchens…</h1>
     <p>If nothing happens in a few seconds, tap the button below.</p>
     <a id="open-link" class="button" href="#">Open in app</a>
   </div>
@@ -68,11 +68,11 @@
   <script>
     // Supabase Auth delivers tokens in the URL hash fragment (e.g. #access_token=...&type=invite
     // or &type=recovery). Email apps and webmail clients routinely strip or refuse to open
-    // custom URL schemes (kitchenapp://) directly, so this page exists purely as a real
+    // custom URL schemes (helixkitchens://) directly, so this page exists purely as a real
     // https:// link that a browser will open — and from inside an actual browser, handing off
     // to the app's custom scheme works reliably. The hash is forwarded unchanged.
     var hash = window.location.hash; // includes the leading '#'
-    var appUrl = 'kitchenapp://reset-password' + hash;
+    var appUrl = 'helixkitchens://reset-password' + hash;
 
     document.getElementById('open-link').href = appUrl;
 
